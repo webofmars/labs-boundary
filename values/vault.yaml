@@ -1,0 +1,22 @@
+server:
+  ingress:
+    enabled: true
+    hosts:
+      - host: vault.dev.192.168.77.54.nip.io
+        paths: []
+
+  dataStorage:
+    enabled: true
+    size: 200Mi
+
+  ha:
+    enabled: false
+    replicas: 1
+    raft:
+      enabled: true
+
+ui:
+  enabled: true
+
+csi:
+  enabled: true

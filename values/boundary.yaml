@@ -1,0 +1,43 @@
+publicAddress: 192.168.77.60
+
+image:
+  tag: "0.7.6"
+
+database:
+  url: postgresql.labs.svc.cluster.local
+  port: 5432
+  ssl: false
+  dbName: boundary
+  username: boundary
+  password: secret
+
+aead:
+  enabled: false
+
+vault:
+  enabled: true
+  # Use form `protocol://fqdn:port`
+  fqdn: http://vault.labs:8200
+  mountPath: local-kms
+  tlsSkipVerify: true
+  # Select whether or not to mount in an externally-created token for management of Vault
+  managementToken:
+    enabled: true
+    envName: VAULT_TOKEN
+    secretName: vault-secret
+  # Pull DB credentials from Vault
+  database:
+    enabled: "false"
+    vaultCredPath: database/creds/boundary
+    vaultAdminCredPath: database/static-creds/boundary-admin
+    vaultDbRole: boundary
+
+ingress:
+  className: ~
+  enabled: true
+  hosts:
+    - host: boundary.dev.192.168.77.54.nip.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+          port: api

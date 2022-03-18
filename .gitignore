@@ -1,0 +1,4 @@
+.env
+.helm
+.secrets
+oauth2-oidc-debugger

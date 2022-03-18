@@ -1,0 +1,3 @@
+[submodule "helm/boundary-chart"]
+	path = helm/boundary-chart
+	url = git@github.com:webofmars/boundary-chart.git
