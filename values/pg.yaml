@@ -10,4 +10,4 @@ tls:
 
 primary:
   persistence:
-    size: 300Mi
+    size: 1Gi

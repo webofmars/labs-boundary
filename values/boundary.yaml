@@ -36,7 +36,7 @@ ingress:
   className: ~
   enabled: true
   hosts:
-    - host: boundary.dev.192.168.77.54.nip.io
+    - host: boundary.dev.134.209.133.207.nip.io
       paths:
         - path: /
           pathType: ImplementationSpecific

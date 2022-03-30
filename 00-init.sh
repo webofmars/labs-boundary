@@ -12,5 +12,6 @@ mkdir -p "${HELM_DATA_HOME}"
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo add hashicorp https://helm.releases.hashicorp.com
 helm repo add boundary-chart https://janikgar.github.io/boundary-chart
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 helm repo update

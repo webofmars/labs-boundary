@@ -6,7 +6,7 @@ set -x
 KUBECONFIG="$(realpath ./labs.kubeconfig)"
 K8S_VERSION="1.23.4"
 K8S_CNI="cilium"
-K8S_INGRESS="nginx"
+K8S_INGRESS="none"
 
 echo "+ creating cluster"
 scw --profile labs \
