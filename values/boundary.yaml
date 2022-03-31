@@ -1,4 +1,4 @@
-publicAddress: 192.168.77.60
+publicAddress: 163.172.189.75
 
 image:
   tag: "0.7.6"
@@ -35,9 +35,28 @@ vault:
 ingress:
   className: ~
   enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
   hosts:
-    - host: boundary.dev.134.209.133.207.nip.io
+    - host: boundary.dev.51.158.57.90.sslip.io
       paths:
         - path: /
           pathType: ImplementationSpecific
           port: api
+  tls:
+    - hosts:
+      - boundary.dev.51.158.57.90.sslip.io
+      secretName: boundary-ingress-cert
+
+service:
+  - type: ClusterIP
+    ports:
+      - name: api
+        number: 9200
+      - name: cluster
+        number: 9201
+  - type: NodePort
+    ports:
+      - name: data
+        number: 9202
+        nodePort: 30202

@@ -7,7 +7,6 @@
 ./00-init.sh
 ./01-pg.sh
 ./02-vault.sh
-./03-boundary.sh
 ```
 
 ```sh
@@ -17,12 +16,8 @@ vault status
 ```
 
 ```sh
-export VAULT_ADDR="http://vault.dev.134.209.133.207.nip.io"
-export VAULT_TOKEN="xxxxxxxxxxxxxx"
-```
-
-```sh
-kubectl create secret -n labs generic vault-secret --from-literal "VAULT_TOKEN=$VAULT_TOKEN"
+export VAULT_ADDR="http://vault.dev.XXX.XXX.XXX.XXX.sslip.io"
+export VAULT_TOKEN="xxxxxxxxxxxxxx" # your root token here
 ```
 
 ## setup vault requirements for boundary
@@ -34,9 +29,16 @@ terraform init
 terraform apply
 ```
 
+```sh
+export VAULT_TOKEN="xxxxxxxxxxxxxx" # your boundary vault token (from terraform output) goes here
+kubectl create secret -n labs generic vault-secret --from-literal "VAULT_TOKEN=$VAULT_TOKEN"
+```
+
+
 ## setup boundary server
 
 ```sh
+./03-boundary.sh
 # edit .secrets/recovery.hcl to reflect your vault addr
 ```
 
